@@ -18,7 +18,7 @@ module.exports = class Main
 		};
 	}
 
-	commandsHandler(path = './cmds')
+	commandsHandler(path = '../cmds')
 	{		
 		this.cmdNoName = [];
 		this.cmdNoFunc = [];
@@ -44,7 +44,7 @@ module.exports = class Main
 		this.client.cmds.set(cmd.name, cmd);
 	}
 
-	eventHandler(path = './evts')
+	eventHandler(path = '../evts')
 	{
 		this.evtNoName = [];
 		this.evtNoFunc = [];
