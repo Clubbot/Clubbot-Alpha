@@ -1,0 +1,23 @@
+{
+  "name": "lulurdbot",
+  "version": "0.0.1",
+  "description": "A Clan Bot for Lulurd's Server",
+  "main": "./dist/index.js",
+  "dependencies": {
+    "@typeit/discord": "^4.0.8",
+    "@types/mongoose": "^5.7.23",
+    "@types/node": "^14.0.13",
+    "discord.js": "^12.2.0",
+    "enmap": "^5.3.0",
+    "fs-nextra": "^0.5.1",
+    "mongoose": "^5.9.18",
+    "ow": "^0.17.0",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "tsc && node ."
+  },
+  "author": "FardinDaDev",
+  "license": "ISC"
+}
