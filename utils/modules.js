@@ -52,7 +52,7 @@ module.exports = {
 		'warn',
 		'webhookUpdate',
 	],
-	
+
 	cmds: new Collection(),
 	evts: new Collection(),
 };
