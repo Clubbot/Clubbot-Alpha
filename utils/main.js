@@ -16,6 +16,7 @@ module.exports = class Main
 			this.commandsHandler(data.path, data.root);
 			this.eventHandler(data.path, data.root);
 			this.client.login(this.token);
+
 		};
 
 		this.cmdNoName = [];
@@ -58,9 +59,8 @@ module.exports = class Main
 			if (extname(EVT_PATH) === '.js') this.eventCheck(join(root, EVT_PATH));
 		});
 
-		if (this.cmdNoName.length > 0) console.log(`These events has either no or invalid names and cannot be loaded.'\n> ${this.cmdNoName.join('\n> ')}`);
-		if (this.cmdNoFunc.length > 0) console.log(`These events has no valid functions of 'onEmit', consider repairing or delete.'\n> ${this.cmdNoFunc.join('\n> ')}`);
-
+		if (this.evtNoName.length > 0) console.log(`These events has either no or invalid names and cannot be loaded.'\n> ${this.evtNoName.join('\n> ')}`);
+		if (this.evtNoFunc.length > 0) console.log(`These events has no valid functions of 'onEmit', consider repairing or delete.'\n> ${this.evtNoFunc.join('\n> ')}`);
 	}
 
 	eventCheck(EVT_PATH)
