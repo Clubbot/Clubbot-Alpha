@@ -1,4 +1,4 @@
 module.exports = {
 	name: 'bruh',
-	onEmit: true,
+	onEmit: true, //yeah a meme
 }

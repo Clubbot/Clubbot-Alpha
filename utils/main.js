@@ -9,13 +9,13 @@ module.exports = class Main
 {
 	constructor(client, data = {})
 	{
-		this.token = process.env.TOKEN;
+		this.token = process.env.TOKEN; //env token
 		this.client = client;
 		Object.assign(this.client, data);
 		this.Init = () => {
-			this.commandsHandler(data.path, data.root);
-			this.eventHandler(data.path, data.root);
-			this.client.login(this.token);
+			this.commandsHandler(data.path, data.root); //root commands pull
+			this.eventHandler(data.path, data.root); //root event handler
+			this.client.login(this.token); //login finalizes
 
 		};
 
@@ -23,20 +23,20 @@ module.exports = class Main
 		this.cmdNoFunc = [];
 		this.evtNoName = [];
 		this.evtNoFunc = [];
-
+//overall events
 	}
 
-	commandsHandler(path = './cmds', root = '../')
+	commandsHandler(path = './cmds', root = '../') //cmd pathing
 	{
 		readdirSync(path).forEach(file => {
-			const CMD_PATH = join(path, file);
+			const CMD_PATH = join(path, file); //path finding
 
-			if (lstatSync(CMD_PATH).isDirectory()) this.commandsHandler(CMD_PATH);
+			if (lstatSync(CMD_PATH).isDirectory()) this.commandsHandler(CMD_PATH); 
 			if (extname(CMD_PATH) === '.js') this.commandCheck(join(root, CMD_PATH));
 		});
 
 		if (this.cmdNoName.length > 0) console.log(`These commands has no or invalid names and cannot be loaded.'\n> ${this.cmdNoName.join('\n> ')}`);
-		if (this.cmdNoFunc.length > 0) console.log(`These commands has no valid functions of 'onTrigger', consider repairing or delete.'\n> ${this.cmdNoFunc.join('\n> ')}`);
+		if (this.cmdNoFunc.length > 0) console.log(`These commands has no valid functions of 'onTrigger', consider repairing or delete.'\n> ${this.cmdNoFunc.join('\n> ')}`); //console error failsafe messages
 	}
 
 	commandCheck(CMD_PATH)
@@ -56,7 +56,7 @@ module.exports = class Main
 			const EVT_PATH = join(path, file);
 
 			if (lstatSync(EVT_PATH).isDirectory()) this.eventHandler(EVT_PATH);
-			if (extname(EVT_PATH) === '.js') this.eventCheck(join(root, EVT_PATH));
+			if (extname(EVT_PATH) === '.js') this.eventCheck(join(root, EVT_PATH)); //path event error failsafe
 		});
 
 		if (this.evtNoName.length > 0) console.log(`These events has either no or invalid names and cannot be loaded.'\n> ${this.evtNoName.join('\n> ')}`);
