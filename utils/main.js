@@ -9,7 +9,7 @@ module.exports = class Main
 {
 	constructor(client, data = {})
 	{
-		this.token = process.env.TOKEN;
+		this.token = process.env.TOKEN ||  data.token;
 		this.client = client;
 		Object.assign(this.client, data);
 		this.Init = () => {
@@ -35,8 +35,8 @@ module.exports = class Main
 			if (extname(CMD_PATH) === '.js') this.commandCheck(join(root, CMD_PATH));
 		});
 
-		if (this.cmdNoName.length > 0) console.log(`These commands has no or invalid names and cannot be loaded.'\n> ${this.cmdNoName.join('\n> ')}`);
-		if (this.cmdNoFunc.length > 0) console.log(`These commands has no valid functions of 'onTrigger', consider repairing or delete.'\n> ${this.cmdNoFunc.join('\n> ')}`);
+		if (this.cmdNoName.length > 0) console.log(`These commands have no or invalid names and cannot be loaded.'\n> ${this.cmdNoName.join('\n> ')}`);
+		if (this.cmdNoFunc.length > 0) console.log(`These commands have no valid functions of 'onTrigger', consider repairing or delete.'\n> ${this.cmdNoFunc.join('\n> ')}`);
 	}
 
 	commandCheck(CMD_PATH)
@@ -59,8 +59,8 @@ module.exports = class Main
 			if (extname(EVT_PATH) === '.js') this.eventCheck(join(root, EVT_PATH));
 		});
 
-		if (this.evtNoName.length > 0) console.log(`These events has either no or invalid names and cannot be loaded.'\n> ${this.evtNoName.join('\n> ')}`);
-		if (this.evtNoFunc.length > 0) console.log(`These events has no valid functions of 'onEmit', consider repairing or delete.'\n> ${this.evtNoFunc.join('\n> ')}`);
+		if (this.evtNoName.length > 0) console.log(`These events have either no or invalid names and cannot be loaded.'\n> ${this.evtNoName.join('\n> ')}`);
+		if (this.evtNoFunc.length > 0) console.log(`These events have no valid functions of 'onEmit', consider repairing or delete.'\n> ${this.evtNoFunc.join('\n> ')}`);
 	}
 
 	eventCheck(EVT_PATH)
